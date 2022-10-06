@@ -4,13 +4,14 @@ const Item = require("./models/items");
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
+const PORT = process.env.PORT || 3000
 const mongodb =
   "mongodb+srv://dmndev:030390@cluster0.wqvo2xu.mongodb.net/item-database?retryWrites=true&w=majority";
 mongoose
   .connect(mongodb, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("connected");
-    app.listen(3000);
+    app.listen(PORT);
   })
   .catch((err) => console.log(err));
 
